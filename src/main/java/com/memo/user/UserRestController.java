@@ -93,7 +93,7 @@ public class UserRestController {
 		String hashedPassword = EncryptUtils.md5(password);
 		
 		// db 조회(loginId, 해싱된 비밀번호) => UserEntity(저장해야 해서)
-		UserEntity user = userBO.getUserByLoginIdPassword(loginId, hashedPassword);
+		UserEntity user = userBO.getUserEntityByLoginIdPassword(loginId, hashedPassword);
 		
 		// 반환
 		Map<String, Object> result = new HashMap<>();
