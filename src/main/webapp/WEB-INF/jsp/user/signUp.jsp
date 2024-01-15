@@ -54,7 +54,7 @@
 				$("#idCheckDuplicated").addClass("d-none");
 				$("#idCheckOk").addClass("d-none");
 				
-				let is_duplicated_id = $("#loginId").val().trim();
+				let loginId = $("#loginId").val().trim();
 				if(loginId.length < 4) {
 					$("#idCheckLength").removeClass("d-none");
 					return;

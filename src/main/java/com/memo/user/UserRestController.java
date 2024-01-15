@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserRestController {
 
+	// http://localhost/user/is-duplicated-id
 	@RequestMapping("/is-duplicated-id")
 	public Map<String, Object> isDuplicatedId(
 			@RequestParam("loginId") String loginId) {
