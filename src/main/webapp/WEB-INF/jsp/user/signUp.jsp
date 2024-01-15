@@ -95,6 +95,7 @@
 						}
 					} else {
 						alert(data.error_message);
+						console.log(data.error_message);
 					}
 				});
 				
@@ -150,7 +151,7 @@
 				// 2) AJAX: 화면 이동되지 않음(콜백함수에서 이동). 응답값 JSON
 				let url = $(this).attr("action");
 				let params = $(this).serialize(); // form 태그에 있는 name 속성과 값으로 파라미터를 구성 
-
+				console.log(params);
 				$.post(url, params) // request
 				.done(function(data) { // response
 					// {"code":200, "result":"성공"}
