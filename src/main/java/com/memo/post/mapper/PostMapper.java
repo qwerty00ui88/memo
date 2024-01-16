@@ -5,10 +5,13 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.memo.post.domain.Post;
+
 @Mapper
 public interface PostMapper {
 	
 	// input: X   output: List<Map<String, Object>>
 	public List<Map<String, Object>> selectPostList();
 	
+	public List<Post> selectPostListByUserId(int userId);
 }
