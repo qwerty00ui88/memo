@@ -35,6 +35,11 @@ public class UserController {
 		return "template/layout";
 	}
 	
+	/**
+	 * 로그아웃 API
+	 * @param session
+	 * @return
+	 */
 	// http://localhost/user/sign-out
 	@RequestMapping("/sign-out")
 	public String signOut(HttpSession session) {
