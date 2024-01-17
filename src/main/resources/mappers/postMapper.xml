@@ -23,4 +23,24 @@
 			`userId` = #{userId}
 		ORDER BY `id` DESC
 	</select>
+	<insert id="insertPost" parameterType="map">
+		INSERT INTO `post`
+		(
+			`userId`
+			, `subject`
+			, `content`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		)
+		values
+		(
+			#{userId}
+			, #{subject}
+			, #{content}
+			, #{imagePath}
+			, NOW()
+			, NOW()
+		)
+	</insert>
 </mapper>
