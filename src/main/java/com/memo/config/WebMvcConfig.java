@@ -16,7 +16,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		
 		registry
 		.addResourceHandler("/images/**") // web path: http://localhost/images/aaaa_1705483572582/cat-8451431_640.jpg
-		.addResourceLocations("file:///" + FileManagerService.FILE_UPLOAD_PATH); // 실제 이미지 파일 위치
+		.addResourceLocations("file:///" + FileManagerService.FILE_UPLOAD_PATH); // 실제 이미지 파일 위치(Windows)-슬래쉬 3개
+//		.addResourceLocations("file://" + FileManagerService.FILE_UPLOAD_PATH); // 실제 이미지 파일 위치(macOS)-슬래쉬 2개
 	}
 	
 }
