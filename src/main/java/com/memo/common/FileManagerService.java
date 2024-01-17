@@ -42,7 +42,7 @@ public class FileManagerService {
 		}
 		
 		// 파일 업로드가 성공했으면 웹 이미지 url path를 리턴
-		// 주소는 이렇게 될 것이다.(예연)
+		// 주소는 이렇게 될 것이다.(예언)
 		// /images/aaaa_2546521546/sun.png
 		return "/images/" + directoryName + "/" + file.getOriginalFilename();
 	}
