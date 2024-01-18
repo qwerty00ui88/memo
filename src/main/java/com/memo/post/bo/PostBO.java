@@ -41,4 +41,9 @@ public class PostBO {
 		postMapper.insertPost(userId, subject, content, imagePath);
 	}
 	
+	// input: 글번호, userId   output: Post
+	public Post getPostByPostIdUserId(int postId, int userId) {
+		return postMapper.selectPostByPostIdUserId(postId, userId);
+	}
+	
 }
