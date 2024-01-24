@@ -97,7 +97,7 @@ public class PostRestController {
 		int userId = (int)session.getAttribute("userId");
 		String userLoginId = (String)session.getAttribute("userLoginId");
 		
-		postBO.deletePostById(userId, userLoginId, postId);
+		postBO.deletePostByPostIdUserId(userId, userLoginId, postId);
 
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 200);

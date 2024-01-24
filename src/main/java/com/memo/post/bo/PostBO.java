@@ -86,12 +86,13 @@ public class PostBO {
 		postMapper.updatePostByPostId(postId, subject, content, imagePath);
 	}
 	
-	public void deletePostById(int userId, String userLoginId, int postId) {
+	public void deletePostByPostIdUserId(int userId, String userLoginId, int postId) {
 		Post post = postMapper.selectPostByPostIdUserId(postId, userId);
 		
 		// 글이 없을 경우
 		if(post == null) {
-			log.info("[글 삭제] post is null. postId:{}, userId:{}", postId, userId);
+			log.info("[글 삭제] post is n"
+					+ "ull. postId:{}, userId:{}", postId, userId);
 			return;
 		}
 		
@@ -99,7 +100,7 @@ public class PostBO {
 		if(post.getImagePath() != null) {
 			fileManagerService.deleteFile(post.getImagePath());
 		}
-		postMapper.deletePostById(postId);
+		postMapper.deletePostByPostIdUserId(postId, userId);
 	}
 	
 }
