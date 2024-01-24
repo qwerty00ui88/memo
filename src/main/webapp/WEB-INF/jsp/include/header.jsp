@@ -4,7 +4,7 @@
 <div class="h-100 d-flex justify-content-between align-items-center">
 	<%-- logo --%>
 	<div>
-		<h1>MEMO 게시판</h1>
+		<a href="/post/post-list-view"><h1>MEMO 게시판</h1></a>
 	</div>
 	<%-- 로그인 정보 --%>
 	<div>

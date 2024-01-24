@@ -22,11 +22,96 @@
 		</div>
 
 		<div class="d-flex justify-content-between">
-			<button type="button" id="deleteBtn" class="btn btn-secondary">삭제</button>
+			<button type="button" id="deleteBtn" class="btn btn-secondary" data-post-id="${post.id}">삭제</button>
 			<div class="d-flex">
 				<a href="/post/post-list-view" class="btn btn-dark">목록</a>
-				<button type="button" id="saveBtn" class="btn btn-primary">수정</button>
+				<button type="button" id="saveBtn" class="btn btn-primary" data-post-id="${post.id}">수정</button>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+	$(document).ready(function() {
+		// 글 수정 버튼
+		$("#saveBtn").on("click", function() {
+			let postId = $(this).data("post-id");
+			let subject = $("#subject").val().trim();
+			let content = $("#content").val();
+			let fileName = $("#file").val(); // C:\fakepath\cat-8451431_640.jpg
+		
+			// validation
+			if(!subject) {
+				alert("제목을 입력하세요.")
+				return;
+			}
+			
+			if(!content) {
+				alert("내용을 입력하세요.")
+				return;
+			}
+			
+			// 파일이 업로드 된 경우에만 확장자 체크
+			if(fileName) {
+				// C:\fakepath\cat-8451431_640.jpg
+				// 확장자만 뽑은 후 소문자로 변경해서 검사한다.
+				let extension = fileName.split(".").pop().toLowerCase();
+				if($.inArray(extension, ['jpg', 'png', 'gif', 'jpeg']) == -1) {
+					alert("이미지 파일만 업로드할 수 있습니다.");
+					$("#file").val("") // 파일을 비운다.
+					return;
+				}
+			}
+			
+			// 이미지를 업로드 할 때는 반드시 form 태그로 구성한다.
+			let formData = new FormData();
+			formData.append("postId", postId);
+			formData.append("subject", subject);
+			formData.append("content", content);
+			formData.append("file", $("#file")[0].files[0]);
+
+			$.ajax({
+				// request
+				type: "PUT"
+				, url: "/post/update"
+				, data: formData
+				, enctype:"multipart/form-data" // 파일 업로드를 위한 필수 설정
+				, processData: false // 파일 업로드를 위한 필수 설정
+				, contentType: false // 파일 업로드를 위한 필수 설정
+				
+				// response
+				, success: function(data) {
+					if(data.code == 200) {
+						alert("메모가 수정되었습니다.");
+						location.reload();
+					} else {
+						alert(data.error_message);
+					}
+				}
+				, error: function(request, status, error) {
+					alert("글을 수정하는데 실패했습니다.")
+				}
+			})
+		})
+		
+		// 글 삭제 버튼
+		$("#deleteBtn").on("click", function() {
+			let postId = $(this).data("post-id");
+			$.ajax({
+				type: "DELETE"
+				, url: "/post/delete"
+				, data: {"postId":postId}
+				, success: function(data) {
+					if(data.code == 200) {
+						alert("메모가 삭제되었습니다.");
+						location.herf("/post/post-list-view");
+					} else {
+						alert(data.error_message);
+					}
+				}
+				, error: function(request, status, error) {
+					alert("글을 삭제하는데 실패했습니다.")
+				}
+			})
+		})
+	})
+</script>
