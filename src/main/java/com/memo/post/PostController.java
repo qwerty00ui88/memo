@@ -21,6 +21,12 @@ public class PostController {
 	@Autowired
 	private PostBO postBO;
 	
+	/**
+	 * 글 목록 화면
+	 * @param model
+	 * @param session
+	 * @return
+	 */
 	// http://localhost/post/post-list-view
 	@GetMapping("/post-list-view")
 	public String postListView(Model model, HttpSession session) {

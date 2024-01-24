@@ -103,7 +103,7 @@
 				, success: function(data) {
 					if(data.code == 200) {
 						alert("메모가 삭제되었습니다.");
-						location.herf("/post/post-list-view");
+						location.href = "/post/post-list-view";
 					} else {
 						alert(data.error_message);
 					}
