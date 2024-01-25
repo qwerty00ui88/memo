@@ -70,10 +70,9 @@
 		WHERE
 			`id` = #{postId}
 	</update>
-	<delete id="deletePostByPostIdUserId" parameterType="map">
+	<delete id="deletePostByPostId" parameterType="int">
 		DELETE FROM `post`
 		WHERE
 			`id` = #{postId}
-			AND `userId` = #{userId}
 	</delete>
 </mapper>

@@ -88,7 +88,7 @@
 					}
 				}
 				, error: function(request, status, error) {
-					alert("글을 수정하는데 실패했습니다.")
+					alert("메모 수정에 실패했습니다.")
 				}
 			})
 		})
@@ -109,7 +109,7 @@
 					}
 				}
 				, error: function(request, status, error) {
-					alert("글을 삭제하는데 실패했습니다.")
+					alert("메모 삭제에 실패했습니다.");
 				}
 			})
 		})
