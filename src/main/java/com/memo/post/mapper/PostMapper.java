@@ -14,7 +14,15 @@ public interface PostMapper {
 	// input: X   output: List<Map<String, Object>>
 	public List<Map<String, Object>> selectPostList();
 	
-	public List<Post> selectPostListByUserId(int userId);
+	public List<Post> selectPostListByUserId(
+			@Param("userId") int userId, 
+			@Param("standardId") Integer standardId, 
+			@Param("direction") String direction, 
+			@Param("limit") int limit);
+	
+	public int selectPostIdByUseridSort(
+			@Param("userId") int userId, 
+			@Param("sort") String sort);
 	
 	public void insertPost(
 			@Param("userId") int userId, 
@@ -33,4 +41,5 @@ public interface PostMapper {
 			@Param("imagePath") String imagePath);
 	
 	public int deletePostByPostId(int postId);
+
 }
